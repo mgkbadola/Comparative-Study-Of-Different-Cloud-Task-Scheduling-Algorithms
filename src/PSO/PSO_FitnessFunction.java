@@ -15,7 +15,7 @@ public class PSO_FitnessFunction extends FitnessFunction {
     @Override
     public double evaluate(double[] position) {
         double alpha = 0.3;
-        return alpha * calcTotalTime(position) + (1 - alpha) * calcMakespan(position);
+        return calcMakespan(position);
     }
 
     private double calcTotalTime(double[] position) {
@@ -24,6 +24,7 @@ public class PSO_FitnessFunction extends FitnessFunction {
             int dcId = (int) position[i];
             totalCost += lengthMatrix[i][dcId];
         }
+        // System.out.println("totalCost  "+ totalCost);
         return totalCost;
     }
 

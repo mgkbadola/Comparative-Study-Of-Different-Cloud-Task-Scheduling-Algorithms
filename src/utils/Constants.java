@@ -31,7 +31,7 @@ public class Constants {
     public static String VMM_NAME = "Topa";
 
     //Cloudlet Parameters
-    public static int NO_OF_TASKS = 30;
+    public static int NO_OF_TASKS =30;
     public static long FILE_SIZE = 300;
     public static long OUTPUT_SIZE = 300;
     public static int TASK_PES = 1;

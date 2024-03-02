@@ -15,6 +15,14 @@ public class Scheduler_Comparison {
         SortedMap<Double, String> map = new TreeMap<>();
         new GenerateLengthMatrix();
         Commons.lengthMatrix = GenerateLengthMatrix.getlengthMatrix();
+        // System.out.println("LINE -18");
+        // for (int i = 0; i < Commons.lengthMatrix.length; i++) {
+        //     for (int j = 0; j < Commons.lengthMatrix[i].length; j++) {
+        //         System.out.print(Commons.lengthMatrix[i][j] + " ");
+        //     }
+        //     System.out.println(); // Move to the next line after printing each row
+        // }
+        
         map.put(FCFS_Scheduler.main(args), "First Come-First Serve");
         System.out.println("===========================================");
         TimeUnit.SECONDS.sleep(1);
@@ -24,10 +32,10 @@ public class Scheduler_Comparison {
         map.put(RoundRobin_Scheduler.main(args), "Round Robin");
         System.out.println("===========================================");
         TimeUnit.SECONDS.sleep(1);
+        // map.put(ACO_Scheduler.main(args), "Ant Colony Optimisation");
+        // System.out.println("===========================================");
+        // TimeUnit.SECONDS.sleep(1);
         map.put(PSO_Scheduler.main(args), "Particle Swarm Optimisation");
-        System.out.println("===========================================");
-        TimeUnit.SECONDS.sleep(1);
-        map.put(ACO_Scheduler.main(args), "Ant Colony Optimisation");
         System.out.println("===========================================");
         TimeUnit.SECONDS.sleep(1);
         System.out.println("Sorted list of algorithms (criteria: earliest finish time)");

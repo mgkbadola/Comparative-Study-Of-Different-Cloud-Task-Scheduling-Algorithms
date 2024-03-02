@@ -13,8 +13,13 @@ public class PSO_Particle extends Particle {
 
         for (int i = 0; i < Constants.NO_OF_TASKS; i++) {
             Random randObj = new Random();
-            position[i] = randObj.nextInt(Constants.NO_OF_DATACENTERS);
+            position[i] = randObj.nextInt(Constants.NO_OF_DATACENTERS);    // This line assigns a random position to the current task. 
+                                                                           // The randObj.nextInt(Constants.NO_OF_DATACENTERS) method generates a random integer between 
+                                                                           // 0 and Constants.NO_OF_DATACENTERS (exclusive). This random number is then stored 
+                                                                           // in the position[i] array element.
             velocity[i] = Math.random();
+            // This line assigns a random velocity to the current task. The Math.random() method generates a random double value between 0.0 and 1.0 (inclusive). 
+            // This random number is then stored in the velocity[i] array element.
         }
         setPosition(position);
         setVelocity(velocity);
