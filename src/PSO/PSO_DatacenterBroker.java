@@ -7,6 +7,9 @@ import org.cloudbus.cloudsim.core.CloudSimTags;
 import org.cloudbus.cloudsim.core.SimEvent;
 import org.cloudbus.cloudsim.lists.VmList;
 
+import utils.Constants;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class PSO_DatacenterBroker extends DatacenterBroker {
@@ -24,8 +27,14 @@ public class PSO_DatacenterBroker extends DatacenterBroker {
     private List<Cloudlet> assignCloudletsToVms(List<Cloudlet> cloudlist) {
         int idx = 0;
         for (Cloudlet cl : cloudlist) {
-            cl.setVmId((int) mapping[idx++]);
+            cl.setVmId((int) mapping[(idx++)]);
+            System.out.println("VM id to cloudlet is " + cl.getCloudletId() + " " +  cl.getVmId());
         }
+
+         // Debug prints
+    System.out.println("Mapping array size: " + mapping.length);
+    System.out.println("Mapping array values: " + Arrays.toString(mapping));
+    
         return cloudlist;
     }
 

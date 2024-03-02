@@ -6,6 +6,7 @@ import org.cloudbus.cloudsim.provisioners.BwProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.PeProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
 
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -70,9 +71,10 @@ public class Commons {
         Vm[] vm = new Vm[Constants.NO_OF_VMS];
 
         for (int i = 0; i < vms; i++) {
-            vm[i] = new Vm(i, userId, Constants.VM_MIPS, Constants.VM_PES, Constants.VM_RAM,
+            int vmId = i + 2; // Adjust this logic based on your VM ID assignment
+            vm[i] = new Vm(vmId, userId, Constants.VM_MIPS, Constants.VM_PES, Constants.VM_RAM,
                     Constants.VM_BANDWIDTH, Constants.VM_IMAGE_SIZE,
-                    Constants.VMM_NAME, new CloudletSchedulerSpaceShared());
+                    Constants.VMM_NAME, new CloudletSchedulerSpaceShared() );
             list.add(vm[i]);
         }
 
@@ -85,7 +87,7 @@ public class Commons {
         UtilizationModel umf = new UtilizationModelFull();
 
         Cloudlet[] cloudlet = new Cloudlet[cloudlets];
-
+        System.out.println(" cloudlet LIST lenght is "+ cloudlet.length);
         for (int i = 0; i < cloudlets; i++) {
             int dcId;
             if(choice == 4)
@@ -93,23 +95,27 @@ public class Commons {
             else
                 dcId = (int) (Math.random() * Constants.NO_OF_DATACENTERS);
             long length = (long) (1e3 * lengthMatrix[i][dcId]);
-
+            // System.out.println(length);
             cloudlet[i] = new Cloudlet(i, length, Constants.TASK_PES, Constants.FILE_SIZE,
                     Constants.OUTPUT_SIZE, umf, umf, umf);
             cloudlet[i].setUserId(userId);
             cloudlet[i].setVmId(dcId + 2);
             list.add(cloudlet[i]);
         }
+        System.out.println("  LIST lenght is "+ list.size()) ;
         return list;
     }
 
     public static void create_vms_and_cloudlets(int brokerId, int choice) {
         vmList = createVMs(brokerId, Constants.NO_OF_DATACENTERS);
         cloudletList = createCloudlets(brokerId, Constants.NO_OF_TASKS, choice);
+        System.out.println(" cloudlet LIST lenght is "+ cloudletList.size());
     }
 
     public static double printCloudletList(List<Cloudlet> list, int choice, PSO PSOSchedulerInstance) {
         Cloudlet cloudlet;
+        System.out.println("LIST LENGTH IS " + list.size());
+        
         Log.printLine();
         Log.printLine("========== OUTPUT ==========");
         Log.printLine("Cloudlet ID\tSTATUS\t" +
